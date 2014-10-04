@@ -1,14 +1,20 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#/blog">Blog</a></li>
-   
-  </ul>
-  <h3 class="text-muted">baby-mean</h3>
-</div>
+<a href="#/posts/new" class="btn btn-success">Create New Post</a>
 
-<div class="jumbotron">
-  <h1>Welcome to baby-mean</h1>
-  <p><a class="btn btn-lg btn-success" ng-href="#/posts">Go to blog!</a></p>
+<!--<img src="/images/casey_with_friends7.jpg" alt="casey with friends"/>-->
+<div style="height: 305px">
+    <carousel interval="myInterval">
+        <slide ng-repeat="slide in slides" active="slide.active" style="transition: ease 1.5s">
+            <img ng-src="{{slide.image}}" style="margin:auto; height:500px">
+            <div class="carousel-caption">
+                <h4>Slide {{$index}}</h4>
+                <p>{{slide.text}}</p>
+            </div>
+        </slide>
+    </carousel>
 </div>
-
+<p>Posts will go here</p>
+<section data-ng-repeat="post in posts">
+    <h2>{{post.title}}</h2>
+    <p>{{post.content}}</p>
+    <a href="#/posts/{{post._id}}">view more</a>
+</section>
