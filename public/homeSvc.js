@@ -9,7 +9,8 @@
             return {
                 getPosts: getPosts,
 //                getPost: getPost,
-                createPost: createPost
+                createPost: createPost,
+                createPostPrivate: createPostPrivate
 //                editPost: editPost,
 //                deletePost: deletePost
             };
@@ -24,7 +25,13 @@
 //            }
 
             function createPost(newPost) {
-                $http.post("api/collections/demotiy", newPost).then(function (res) {
+                $http.post("api/collections/memories", newPost).then(function (res) {
+                    $rootScope.$broadcast("post:added");
+                });
+            }
+
+            function createPostPrivate(newPost) {
+                $http.post("api/collections/Private", newPost).then(function (res) {
                     $rootScope.$broadcast("post:added");
                 });
             }

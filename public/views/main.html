@@ -1,20 +1,42 @@
-<a href="#/posts/new" class="btn btn-success">Create New Post</a>
-
-<!--<img src="/images/casey_with_friends7.jpg" alt="casey with friends"/>-->
-<div style="height: 305px">
+<header id="head" class="block"><h1 class="hand inline med-padding-left">Remembering Casey</h1><a href="#/posts/new" class="the-btn btn btn-success float-right">Create New Post</a></header>
+<div id="carouselHolder" class="block">
     <carousel interval="myInterval">
         <slide ng-repeat="slide in slides" active="slide.active" style="transition: ease 1.5s">
-            <img ng-src="{{slide.image}}" style="margin:auto; height:500px">
+            <img class="images" ng-src="{{slide.image}}">
             <div class="carousel-caption">
-                <h4>Slide {{$index}}</h4>
-                <p>{{slide.text}}</p>
+                <!--<h4>Slide {{$index}}</h4>-->
+                <!--<h5>{{slide.text}}</5>-->
             </div>
         </slide>
     </carousel>
 </div>
-<p>Posts will go here</p>
-<section data-ng-repeat="post in posts">
-    <h2>{{post.title}}</h2>
-    <p>{{post.content}}</p>
-    <a href="#/posts/{{post._id}}">view more</a>
-</section>
+<div id="contentHolder" class="row">
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 med-padding">
+        <div id="contentLeft" class="block">
+            <section class="post col-lg-6 col-md-6 col-sm-6 col-xs-12" data-ng-repeat="post in posts">
+                <img src="{{post.image}}" style="border\-radius: 100%; width: 65px; margin-left: 30px;" alt="Image of Author"/>
+                <h2 class="hand">From: {{post.author}}</h2>
+                <p class="line-height">&nbsp &nbsp {{post.content}} &nbsp <a ng-click="gototop()"><i class="fa fa-angle-double-up fa-lg"></i></a></p>
+            </section>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 med-padding">
+        <div id="contentRight" class="block med-padding">
+            <div class="block box">
+                <h3 class=" sm-margin-bottom text-center">About</h3>
+                <p class="">This page is here to share any and all memories of Casey, our good, animated, friend with an endless spirit. Please feel free to contribute to our collective memory by clicking &nbsp &nbsp
+                    <a href="#/posts/new">here</a></p>
+            </div>
+            <div class="block box">
+                <h3 class="sm-margin-bottom text-center">Contributors</h3>
+                <p class="contributors" data-ng-repeat="post in posts">{{post.author}}</p>
+            </div>
+            <div class="block box">
+                <h3 class="sm-margin-bottom text-center">Notes on images...</h3>
+                <hr class="sm-margin-top lg-margin-bottom"/>
+                <p class="">If you have any images you would like to share of Casey, please do as others have and upload them to facebook.  It would be appreciated if any photos could also be sent to
+                    <a href="" tooltip-placement="bottom" tooltip="Brendan Quinn's email" style="color: powderblue">quinn.197@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</div>

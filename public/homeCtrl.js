@@ -3,7 +3,7 @@
 
     angular
         .module('baby-mean')
-        .controller('homeCtrl',['$scope', '$location', 'homeSvc', function ($scope, $location, homeSvc) {
+        .controller('homeCtrl',['$scope', '$location', '$anchorScroll',  'homeSvc', function ($scope, $location, $anchorScroll, homeSvc) {
 
             homeSvc.getPosts().success(function (posts) {
                 $scope.posts = posts;
@@ -14,9 +14,15 @@
 //            });
 
             $scope.createPost = function (newPost) {
-                newPost.time = Date().getTime();
-                homeSvc.createPost(newPost);
-                $location.path('/posts');
+                newPost.time = new Date().getTime();
+                if(newPost.public) {
+                    homeSvc.createPostPrivate(newPost);
+                }
+                else {
+                    homeSvc.createPost(newPost);
+                }
+
+                $location.path('/');
             };
 
             $scope.slides = [
@@ -80,6 +86,16 @@
             $scope.CollapseDemoCtrl = function(){
                 $scope.isCollapsed = true;
             }
+
+            $scope.gototop = function() {
+                // set the location.hash to the id of
+                // the element you wish to scroll to.
+//                $location.hash('carouselHolder');
+
+                $('html, body').animate({
+                    scrollTop: $("#carouselHolder").offset().top }, 1500);
+
+            };
 
         }]);
 

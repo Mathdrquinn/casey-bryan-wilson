@@ -1,5 +1,15 @@
-<input type="text" data-ng-model="post.author">
-<br/>
-<textarea data-ng-model="post.content"></textarea>
-<br/>
-<button data-ng-click="createPost(post)">Create</button>
+<form class="formHolder lg-margin-top" ng-submit="createPost(post)">
+    <p class="text-left med-margin-bottom">
+        <input id="name" class="lg-margin-bottom" type="text" data-ng-model="post.author" placeholder="Your name">
+        <input id="pic" class="lg-margin-bottom" type="text" data-ng-model="post.image" placeholder="URL address of a picture of you">
+    </p>
+    <br/>
+    <span style="color: white">Tell your Story</span>
+    <textarea id="content" class="" data-ng-model="post.content">Your Story Here</textarea>
+    <br/>
+
+    <a href="" tooltip-placement="top" tooltip="Public messages will be posted to the main page.  Private messages will be kept off the front page but will still make their way to the Wilson family.">What is this?</a>
+    &nbsp &nbsp <i style="color: white" ng-click="post.public=false" ng-hide="!post.public"  class="fa fa-toggle-on">Private</i><i style="color: white" ng-click="post.public=true" ng-hide="post.public" class="fa fa-toggle-off">Public</i>
+
+    <button class="btn" type="submit">Create</button>
+</form>
